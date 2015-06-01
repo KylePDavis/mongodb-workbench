@@ -1,0 +1,108 @@
+/* dark theme tweaks */
+editor .ace-tomorrow-night .ace_marker-layer .ace_selected-word {
+	box-shadow: 0 0 1px #CCC;
+}
+
+
+/* autocomplete plugin tweaks */
+body .ace_editor.ace_autocomplete {
+	background: inherit;
+	color: inherit;
+	box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.3);
+	border-radius: 0.25em;
+	border: 1px #444 solid;
+}
+body .ace_editor.ace_autocomplete .ace_line {
+	color: #888;
+}
+body .ace_editor.ace_autocomplete .ace_line .ace_completion-highlight {
+	color: #DDD;
+}
+body .ace_editor.ace_autocomplete .ace_line.ace_selected {
+	color: #444;
+}
+body .ace_editor.ace_autocomplete .ace_line.ace_selected .ace_completion-highlight {
+	color: #FFF;
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+}
+body .ace_editor.ace_autocomplete .ace_marker-layer .ace_line-hover {
+	opacity: 0.5;
+}
+body .ace_editor.ace_autocomplete .ace_marker-layer .ace_active-line {
+	background-color: #ABC;
+}
+
+
+/* statusbar plugin tweaks */
+editor .ace_status-indicator {
+	position: absolute;
+	right: 0.5em;
+	bottom: 0.5em;
+	z-index: 99;
+	opacity: 0.5;
+}
+
+
+/* search plugin tweaks */
+editor .ace_search {
+	position: absolute;
+	left: 0;
+	top: inherit;
+	bottom: 0;
+	right: inherit;
+	max-width: inherit;
+	width: 100%;
+	padding-top: 5px;
+	margin: 0;
+	border: 0;
+	border-top: 2px solid #ABC;
+	background: inherit;
+	color: #CCD;
+}
+
+editor .ace_search > * {
+	float: none;
+	display: table;
+}
+
+editor .ace_search .ace_replace_form > * {
+	float: none;
+}
+editor .ace_search .ace_replace_form .ace_replacebtn {
+	padding: 4px;
+}
+
+editor .ace_search .ace_searchbtn_close {
+	position: absolute;
+	top: 0;
+	right: 4px;
+}
+
+editor .ace_search .ace_search_options {
+	position: absolute;
+	top: 5px;
+	right: 40px;
+}
+
+editor .ace_search input,
+editor .ace_search button,
+editor .ace_search .ace_button {
+	background-color: #234;
+	color: #CCD;
+	transition: background-color 0.1s, color 0.1s;
+	opacity: 1.0;
+}
+
+editor .ace_search input:focus,
+editor .ace_search button:focus,
+editor .ace_search .ace_button:focus {
+	background-color: #345;
+	border-color: #345;
+}
+
+editor .ace_search button:hover,
+editor .ace_search .ace_button:hover {
+	transition: background-color 0.3s, color 0.3s;
+	background-color: #ABC;
+	color: #234;
+}

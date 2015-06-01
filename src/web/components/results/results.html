@@ -1,0 +1,63 @@
+<label class="control-label">
+	Results
+	<span>
+		<i ng-if="model.data === null" class="fa fa-spinner fa-spin"></i>
+		<span ng-if="angular.isArray(model.data)">
+			(<code>{{model.data.length}}</code>)
+		</span>
+	</span>
+</label>
+
+<tabset>
+
+	<tab heading="JSON"
+		active="viewModel.tabs.json"
+		select="model.options.tabName='json'"
+		deselect="model.options.tabName=null"
+	>
+		<editor class="form-control" style="height:25em; padding:0; border-top-left-radius:0; border-top-right-radius:0;"
+			ng-if="viewModel.tabs.json"
+			autofocus
+			readonly
+			editor-model="viewModel.jsonEditor"
+		/>
+	</tab>
+
+	<tab heading="Table"
+		active="viewModel.tabs.table"
+		select="model.options.tabName='table'"
+		deselect="model.options.tabName=null"
+		ng-if="viewModel.jsonEditor.data[0] === '[' && viewModel.jsonEditor.data[1] !== ']'"
+	>
+		<div class="grid" style="width:auto; height:30em"
+			ng-if="viewModel.tabs.table"
+			ui-grid="viewModel.gridOptions"
+			ui-grid-auto-resize
+			ui-grid-resize-columns
+			ui-grid-move-columns
+			ui-grid-cellNav
+			ui-grid-edit
+		></div>
+	</tab>
+
+	<!--
+	<tab heading="Plot"
+		active="viewModel.tabs.plot"
+		select="model.options.tabName='plot'"
+		deselect="model.options.tabName=null"
+	>
+		TODO: ...
+	</tab>
+	-->
+
+	<!--
+	<tab heading="Diagram"
+		active="viewModel.tabs.diagram"
+		select="model.options.tabName='diagram'"
+		deselect="model.options.tabName=null"
+	>
+		TODO: ...
+	</tab>
+	-->
+
+</tabset>

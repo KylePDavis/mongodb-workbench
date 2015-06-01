@@ -1,0 +1,72 @@
+<div class="row form-inline">
+
+	<div class="col-xs-4 form-group">
+		<div class="input-group input-group-md">
+			<span class="input-group-addon" title="Server">
+				<i class="fa fa-server"></i>
+			</span>
+			<input type="text" class="form-control" placeholder="localhost:27017"
+				autofocus
+				ng-model="model.dbHostAndPort"
+				ng-model-options="{debounce:500}"
+			>
+			<a href class="input-group-addon" tabindex="-1" ng-click="getDatabasesViewModel()">
+				<i class="fa fa-bolt" title="Connect"></i>
+			</a>
+		</div>
+	</div>
+
+	<div class="col-xs-4 form-group">
+		<div class="input-group input-group-md">
+			<label class="input-group-addon" title="Database">
+				<i class="fa fa-database"></i>
+			</label>
+			<ui-select theme="selectize" class="form-control" title="Select a database"
+				tagging="getDatabaseViewModelFromTag"
+				tagging-label="(new database)"
+				ng-disabled="!model.isConnected"
+				ng-model="model.dbName"
+			>
+				<ui-select-match placeholder="Select a database">{{$select.selected.name}}</ui-select-match>
+				<ui-select-choices repeat="db.name as db in viewModel.databases | filter:$select.search track by db.name">
+					<div ng-bind-html="db.name | highlight:$select.search"></div>
+					<small>
+						<span ng-if="!db.empty">
+							{{db.sizeOnDisk / 1024 / 1024 | number:0}} MB
+						</span>
+						<i ng-if="db.isTag">
+							{{$select.taggingLabel}}
+						</i>
+					</small>
+				</ui-select-choices>
+			</ui-select>
+		</div>
+	</div>
+
+	<div class="col-xs-4 form-group">
+		<div class="input-group input-group-md">
+			<label class="input-group-addon" title="Collection">
+				<i class="fa fa-table"></i>
+			</label>
+			<ui-select theme="selectize" class="form-control" title="Select a collection"
+				tagging="getCollectionViewModelFromTag"
+				tagging-label="(new collection)"
+				ng-disabled="!model.isConnected"
+				ng-model="model.dbColName"
+			>
+				<ui-select-match placeholder="Select a collection">{{$select.selected.name}}</ui-select-match>
+				<ui-select-choices repeat="col.name as col in viewModel.collections | filter:$select.search track by col.name">
+					<div ng-bind-html="col.name | highlight:$select.search"></div>
+					<small>
+						<span>{{col.namespace}}</span>
+						<i ng-if="col.isTag">
+							{{$select.taggingLabel}}
+						</i>
+					</small>
+				</ui-select-choices>
+			</ui-select>
+
+		</div>
+	</div>
+
+</div>

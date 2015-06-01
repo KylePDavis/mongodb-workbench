@@ -1,0 +1,36 @@
+{
+  "name": "mongodb-workbench",
+  "productName": "MongoDB Workbench",
+  "version": "0.0.1",
+  "author": "Kyle P. Davis",
+  "description": "A client to make working with MongoDB even better",
+  "license": "MIT",
+  "homepage": "https://KylePDavis.github.io/mongodb-workbench",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KylePDavis/mongodb-workbench.git"
+  },
+  "bugs": "https://github.com/KylePDavis/mongodb-workbench/issues",
+  "keywords": [
+    "mongodb",
+    "workbench",
+    "database",
+    "query",
+    "aggregate",
+    "visualize",
+    "data",
+    "ide",
+    "editor"
+  ],
+  "main": "src/app/main.js",
+  "scripts": {
+    "postinstall": "bower install",
+    "test": "jshint src/  &&  jscs src/app/ src/web/{*.js,components,pages}",
+    "start": "electron ."
+  },
+  "dependencies": {
+    "electron-prebuilt": "~0.27.1",
+    "mongodb": "~2.0.33"
+  }
+  ,"private": true
+}

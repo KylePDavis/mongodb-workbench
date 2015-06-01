@@ -1,0 +1,27 @@
+<tabset class="tabset" justified="true">
+
+	<tab ng-repeat="plugin in viewModel.plugins track by plugin.id"
+		select="model.tabName=plugin.id"
+		deselect="model.tabName=null"
+	>
+		<tab-heading>
+			<i ng-class="plugin.tabIconClass"></i>
+			{{plugin.tabTitle}}
+			<span tmpltmpl="
+				<span collection-{{plugin.id}}-controls ng-if='model.tabName==plugin.id'
+					collection-{{plugin.id}}-ctrl='ctrl.{{plugin.id}}'
+					collection-{{plugin.id}}-model='model.{{plugin.id}}'
+					connection-model='connectionModel'
+				/>
+			"/>
+		</tab-heading>
+		<div tmpltmpl="
+			<div collection-{{plugin.id}} ng-if='model.tabName==plugin.id'
+				collection-{{plugin.id}}-ctrl='ctrl.{{plugin.id}}'
+				collection-{{plugin.id}}-model='model.{{plugin.id}}'
+				connection-model='connectionModel'
+			/>
+		"/>
+	</tab>
+
+</tabset>

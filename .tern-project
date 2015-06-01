@@ -1,0 +1,26 @@
+{
+  "libs": [
+    "ecma5",
+    "ecma6",
+    "browser",
+    "jquery"
+  ],
+  "loadEagerly": [
+    "src/web/**/*.js"
+  ],
+  "dontLoad": [
+    "src/web/**/*.min.js",
+    "src/web/bower_components/**/*.js"
+  ],
+  "plugins": {
+    "complete_strings": {
+      "maxLength": 15
+    },
+    "node": {},
+    "lint": {},
+    "angular": true,
+    "doc_comment": {
+      "fullDocs": true
+    }
+  }
+}

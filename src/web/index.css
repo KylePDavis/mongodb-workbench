@@ -1,0 +1,52 @@
+/* minor adjustments to top */
+html, body {
+	height: 100%;
+}
+
+/* disable selections on nearly everything */
+* {
+	user-select: none;
+	-webkit-user-select: none;
+}
+input, textarea, p, h1, h2, h3, h4, h5, h6, small, label, code, pre {
+	user-select: initial;
+	-webkit-user-select: initial;
+}
+
+/* reduce the padding between columns in a row */
+.row {
+	margin-right: 0;
+	margin-left: 0;
+}
+.row [class^="col-"],
+.row [class*=" col-"] {
+	padding-right: 5px;
+	padding-left: 5px;
+}
+
+/* reset a few rrounded corners */
+.input-group > .selectize-control > .selectize-input {
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+}
+/* hack to fix extra margin on dropdown */
+.input-group > .selectize-control {
+	margin-bottom: -5px;
+}
+
+/* tweaks for form across the top */
+.form-inline .form-group .input-group {
+	width: 100%;
+}
+.form-inline .form-group .input-group .input-group-addon {
+	width: 1px; /*force it to use the min width*/
+}
+
+/* tweaks for ace */
+.ace_editor {
+	z-index: 0;
+}
+
+.ui-grid-cell-contents {
+	font: 12px/normal "Monaco", "Menlo", "Ubuntu Mono", "Consolas", "source-code-pro", monospace;
+}

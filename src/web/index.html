@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="mw" style="background:#fff; width:100%; height:100%;">
+<head>
+	<title>MongoDB Workbench</title>
+
+	<meta charset="utf-8" />
+	<!-- <meta http-equiv="Content-Security-Policy" content="default-src *; script-src 'self'; style-src 'self' 'unsafe-inline';" /> -->
+
+	<link type="text/css" rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css" />
+	<link type="text/css" rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
+	<link type="text/css" rel="stylesheet" href="bower_components/angular-ui-select/dist/select.min.css" />
+	<link type="text/css" rel="stylesheet" href="bower_components/selectize/dist/css/selectize.bootstrap3.css" />
+	<link type="text/css" rel="stylesheet" href="bower_components/angular-ui-grid/ui-grid.min.css" />
+	<link type="text/css" rel="stylesheet" href="index.css" />
+	<link type="text/css" rel="stylesheet" href="components/editor/editor.css" />
+
+	<script src="bower_components/jquery/dist/jquery.min.js"></script>
+	<script>window.$=window.jQuery=module.exports; /*NOTE: HACK: to allow jQuery on Electron*/</script>
+	<script src="bower_components/angular/angular.min.js"></script>
+
+</head>
+
+<body ng-controller="IndexCtrl" tabindex="-1" style="width:100%; height:100%; margin:0px; overflow:hidden;">
+
+	<div ng-view></div>
+
+	<div class="row" style="margin:1em 0;">
+		<div class="col-xs-12">
+			<div connection
+				connection-model="model.connection"
+			></div>
+		</div>
+	</div>
+
+	<div class="row" style="height:100%; padding:4px;">
+
+		<welcome ng-if="!model.connection.isConnected"></welcome>
+
+		<div class="col-xs-12" style="height:100%;">
+
+			<tabset ng-if="model.connection.isConnected" justified="true" class="tabset">
+
+				<tab active="viewModel.tabs.server"
+					select="model.tabName='server'"
+					deselect="model.tabName=null"
+				>
+					<tab-heading>
+						<b>Server (⌘1)</b>
+					</tab-heading>
+					<div server ng-if="viewModel.tabs.server"
+						server-ctrl="ctrl.server"
+						server-model="model.server"
+						connection-model="model.connection"
+					></div>
+				</tab>
+
+				<tab active="viewModel.tabs.database"
+					select="model.tabName='database'"
+					deselect="model.tabName=null"
+					disable="!model.connection.dbName"
+				>
+					<tab-heading>
+						<b>Database (⌘2)</b>
+					</tab-heading>
+					<div database ng-if="viewModel.tabs.database"
+						database-ctrl="ctrl.database"
+						database-model="model.database"
+						connection-model="model.connection"
+					></div>
+				</tab>
+
+				<tab active="viewModel.tabs.collection"
+					select="model.tabName='collection'"
+					deselect="model.tabName=null"
+					disable="!model.connection.dbColName"
+				>
+					<tab-heading>
+						<b>Collection (⌘3)</b>
+					</tab-heading>
+					<div collection ng-if="viewModel.tabs.collection"
+						collection-ctrl="ctrl.collection"
+						collection-model="model.collection"
+						connection-model="model.connection"
+					></div>
+				</tab>
+
+			</tabset>
+
+		</div>
+
+	</div>
+
+	<script src="bower_components/angular-route/angular-route.min.js"></script>
+	<script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+
+	<script>
+		// auto add base
+		angular.element(document.getElementsByTagName("head"))
+			.append(angular.element("<base href=\"" + window.location.pathname + "\" />"));
+	</script>
+
+	<script src="bower_components/angular-ui-bootstrap-bower/ui-bootstrap-tpls.min.js"></script>
+
+	<script src="bower_components/angular-ui-select/dist/select.min.js"></script>
+
+	<script src="bower_components/ace-builds/src-min-noconflict/ace.js"></script>
+	<script src="bower_components/ace-builds/src-min-noconflict/ext-language_tools.js"></script>
+	<script src="bower_components/ace-builds/src-min-noconflict/ext-statusbar.js"></script>
+	<script src="bower_components/angular-ui-ace/ui-ace.min.js"></script>
+
+	<script src="bower_components/angular-ui-grid/ui-grid.min.js"></script>
+
+	<script src="components/angular/angular.js"></script>
+	<script src="components/data/json.js"></script>
+	<script src="components/data/mongo.js"></script>
+	<script src="components/connection/connection.js"></script>
+	<script src="components/words/words.js"></script>
+	<script src="components/editor/editor.js"></script>
+	<script src="components/editor/ext-gotolinebox.js"></script>
+	<script src="components/results/results.js"></script>
+
+	<script src="pages/welcome/welcome.js"></script>
+
+	<script src="pages/server/server.js"></script>
+	<script src="pages/server/server-status/server-status.js"></script>
+	<script src="pages/server/server-build/server-build.js"></script>
+	<script src="pages/server/server-admin/server-admin.js"></script>
+
+	<script src="pages/database/database.js"></script>
+	<script src="pages/database/database-info/database-info.js"></script>
+	<!-- <script src="pages/database/database-gridFs/database-gridFs.js"></script> -->
+	<script src="pages/database/database-admin/database-admin.js"></script>
+
+	<script src="pages/collection/collection.js"></script>
+	<script src="pages/collection/collection-info/collection-info.js"></script>
+	<script src="pages/collection/collection-insert/collection-insert.js"></script>
+	<!-- <script src="pages/collection/collection-update/collection-update.js"></script> -->
+	<script src="pages/collection/collection-remove/collection-remove.js"></script>
+	<script src="pages/collection/collection-find/collection-find.js"></script>
+	<script src="pages/collection/collection-aggregate/collection-aggregate.js"></script>
+	<!-- <script src="pages/collection/collection-mapReduce/collection-mapReduce.js"></script> -->
+	<!-- <script src="pages/collection/collection-admin/collection-admin.js"></script> -->
+
+	<script src="index.js"></script>
+
+</body>
+
+</html>

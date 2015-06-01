@@ -1,0 +1,5 @@
+<button title="Aggregate"
+	class="btn btn-xs btn-primary fa fa-play"
+	ng-class="{disabled:!connectionModel.dbName || !connectionModel.dbColName || viewModel.isWorking}"
+	ng-click="ctrl.run()"
+></button>

@@ -1,0 +1,20 @@
+!.gitkeep
+
+# misc files
+*.swp
+.DS_Store
+
+# node
+/node_modules/
+npm-debug.log
+
+# IDE files
+/.idea
+/.settings.xml
+/.settings/
+/.c9revisions/
+/.c9/
+
+# builds
+/node_modules/
+/src/web/bower_components/

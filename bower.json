@@ -1,0 +1,36 @@
+{
+  "name": "mongodb-workbench",
+  "version": "0.0.1",
+  "authors": [
+    "Kyle P Davis <me@KylePDavis.com>"
+  ],
+  "moduleType": [
+    "globals"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.2",
+    "font-awesome": "~4.3.0",
+    "jquery": "~2.1.4",
+    "selectize": "~0.12.0",
+    "ace-builds": "~1.1.8",
+    "angular": "~1.4.0",
+    "angular-sanitize": "~1.4.0",
+    "angular-route": "~1.4.0",
+    "angular-ui-bootstrap-bower": "~0.13.0",
+    "angular-ui-select": "~0.9.9",
+    "angular-ui-ace": "~0.2.3",
+    "angular-ui-grid": "~3.0.0-rc.21"
+  },
+  "resolutions": {
+    "angular": "~1.4.0"
+  }
+}
