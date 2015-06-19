@@ -145,7 +145,7 @@ angular.module("mw.components.data.json", [
 		return new mongodb.Timestamp(ts.t, ts.i);
 	};
 
-	return {
+	var JsonSvc = {
 
 		stringify: function stringify(obj, fmt) {
 			return JSON.stringify(obj, function replacer(k, v) {
@@ -170,22 +170,26 @@ angular.module("mw.components.data.json", [
 
 		parseExpression: function parseExpression(str) {
 			var stripped = str
-				.replace(/;\s*$/, "") // no trailing ;
-				.replace(/\/\/.*$/gm, ""); // no line comments
-			return $parse(stripped)({
-				RegExp: RegExp,
-				Date: ISODate,
-				ISODate: ISODate,
-				ObjectId: mongodb.ObjectId,
-				ObjectID: mongodb.ObjectID, // still need this?
-				MinKey: mongodb.MinKey,
-				MaxKey: mongodb.MaxKey,
-				DBRef: mongodb.DBRef,
-				Binary: mongodb.Binary,
-				Code: mongodb.Code,
-			});
+					.replace(/;\s*$/, "") // no trailing ;
+					.replace(/\/\/.*$/gm, ""), // no line comments
+				obj = $parse(stripped)({
+					RegExp: RegExp,
+					Date: ISODate,
+					ISODate: ISODate,
+					ObjectId: mongodb.ObjectId,
+					ObjectID: mongodb.ObjectID, // still need this?
+					MinKey: mongodb.MinKey,
+					MaxKey: mongodb.MaxKey,
+					DBRef: mongodb.DBRef,
+					Binary: mongodb.Binary,
+					Code: mongodb.Code,
+				});
+			// run through our conversions to convert any JSON representations to instances
+			return JsonSvc.parse(JsonSvc.stringify(obj));
 		},
 
 	};
+
+	return JsonSvc;
 
 });
