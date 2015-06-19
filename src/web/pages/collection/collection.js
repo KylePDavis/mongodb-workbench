@@ -12,11 +12,11 @@ var pluginPrefix = "collection",
 			tabIconClass: "fa fa-file-o",
 			tabTitle: "Insert",
 		},
-		// {
-		// 	id: "update",
-		// 	tabIconClass: "fa fa-pencil",
-		// 	tabTitle: "Update",
-		// },
+		{
+			id: "update",
+			tabIconClass: "fa fa-pencil",
+			tabTitle: "Update",
+		},
 		{
 			id: "remove",
 			tabIconClass: "fa fa-trash-o",

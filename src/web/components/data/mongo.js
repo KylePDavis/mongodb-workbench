@@ -197,6 +197,27 @@ angular.module("mw.components.data.mongo", [
 		},
 
 
+		update: function update(dbUrl, collectionName, selector, update, options) {
+			return $q(function(resolve, reject) {
+				if (typeof dbUrl !== "string") dbUrl = MongoSvc.getDbUrl(dbUrl);
+				if (!collectionName) return reject(new Error("required `collectionName`"));
+//TODO: if (!mongodb) return resolve({result:{ok:1,nModified:1,n:1},connection:{id:123,host:"localhost",port:27017}});
+				if (!options) options = {};
+				mongodb.MongoClient.connect(dbUrl, function(err, db) {
+					if (err) return reject(err);
+					var collection = db.collection(collectionName);
+					collection.update(selector, update, options, function(err2, results) {
+						if (err2) return reject(err2);
+						return resolve({
+							result: results.result,
+							connection: results.connection.toJSON(),
+						});
+					});
+				});
+			});
+		},
+
+
 		aggregate: function aggregate(dbUrl, collectionName, pipeline, options) {
 			return $q(function(resolve, reject) {
 				if (typeof dbUrl !== "string") dbUrl = MongoSvc.getDbUrl(dbUrl);
