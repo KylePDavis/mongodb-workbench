@@ -50,17 +50,18 @@ angular.module("mw.pages.database.databaseInfo", [
 	};
 
 	this.run = function run() {
-		if (!$scope.connectionModel) return;
+		if (!$scope.connectionModel) return $q.reject();
 
 		$scope.viewModel.isWorking = true;
 		$scope.model.data = {};
 
-		if (!$scope.connectionModel.dbHostAndPort) return;
+		if (!$scope.connectionModel.dbHostAndPort) return $q.reject();
 
 		var dbUrl = MongoSvc.getDbUrl($scope.connectionModel);
 		return MongoSvc.getStats(dbUrl)
 			.then(function(stats) {
-				return ($scope.model.data = stats);
+				$scope.model.data = stats;
+				return stats;
 			})
 			.catch(function(err) {
 				var err2 = new Error("Unable to get `db.stats()`");

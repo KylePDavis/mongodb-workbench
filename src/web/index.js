@@ -11,12 +11,7 @@ angular.module("mw", [
 ])
 
 
-.controller("IndexCtrl",
-["$scope",
-function($scope) {
-
-
-	if (typeof global === "undefined") window.global = window;
+.controller("IndexCtrl", function($scope) {
 
 
 	$scope.ctrl = {};
@@ -29,8 +24,7 @@ function($scope) {
 		database: {},
 		collection: {},
 	};
-	$scope.model = angular.extend({}, modelDefaults, $scope.model || {}, global.model || {});
-	global.model = $scope.model; // persist global app state between refreshes
+	$scope.model = angular.extend({}, modelDefaults, $scope.model || {});
 
 
 	$scope.viewModel = {
@@ -38,7 +32,7 @@ function($scope) {
 	};
 
 
-	$scope.$watch("model.tabName", function(tabName, oldTabName) {
+	$scope.$watch("model.tabName", function(tabName) {
 		if (!tabName) return;
 		var tabs = {};
 		tabs[tabName] = true;
@@ -66,5 +60,4 @@ function($scope) {
 			}
 		});
 
-},
-]);
+});

@@ -19,13 +19,16 @@ module.exports = class AppMenu extends EventEmitter {
 	/**
 	 * Get copy of template and replace click strings with click handler functions that emit event
 	 * @method _getTemplateWithClickHandlers
+	 * @param  {Object} tmpl The menu template Object
 	 * @private
+	 * @return {Object} The results of the menu template Object with click handler functions
 	 */
 	_getTemplateWithClickHandlers(tmpl) {
 		let self = this;
 		return JSON.parse(JSON.stringify(tmpl), (k, v) => {
-			if (k === "click" && typeof v === "string")
+			if (k === "click" && typeof v === "string") {
 				return () => self.emit(v);
+			}
 			return v;
 		});
 	}

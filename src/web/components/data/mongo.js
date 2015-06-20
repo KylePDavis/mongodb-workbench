@@ -197,7 +197,7 @@ angular.module("mw.components.data.mongo", [
 		},
 
 
-		update: function update(dbUrl, collectionName, selector, update, options) {
+		update: function update(dbUrl, collectionName, selector, updates, options) {
 			return $q(function(resolve, reject) {
 				if (typeof dbUrl !== "string") dbUrl = MongoSvc.getDbUrl(dbUrl);
 				if (!collectionName) return reject(new Error("required `collectionName`"));
@@ -206,7 +206,7 @@ angular.module("mw.components.data.mongo", [
 				mongodb.MongoClient.connect(dbUrl, function(err, db) {
 					if (err) return reject(err);
 					var collection = db.collection(collectionName);
-					collection.update(selector, update, options, function(err2, results) {
+					collection.update(selector, updates, options, function(err2, results) {
 						if (err2) return reject(err2);
 						return resolve({
 							result: results.result,

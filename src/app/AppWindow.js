@@ -10,7 +10,7 @@ module.exports = class AppWindow extends EventEmitter {
 	constructor(pkg) {
 		super();
 		let mousePos = screen.getCursorScreenPoint(),
-			winSize = {w:800, h:600},
+			winSize = { w: 800, h: 600 },
 			winOpts = {
 				x: mousePos.x - (winSize.w / 2),
 				y: mousePos.y - (winSize.h / 2),

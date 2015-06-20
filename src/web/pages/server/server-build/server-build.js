@@ -50,12 +50,13 @@ angular.module("mw.pages.server.serverBuild", [
 	};
 
 	this.run = function run() {
-		if (!$scope.connectionModel || !$scope.connectionModel.dbHostAndPort) return;
+		if (!$scope.connectionModel || !$scope.connectionModel.dbHostAndPort) return $q.reject();
 		$scope.viewModel.isWorking = true;
 		$scope.model.results = null;
 		return MongoSvc.getBuildInfo($scope.connectionModel)
 			.then(function(buildInfo) {
-				return ($scope.model.results = buildInfo);
+				$scope.model.results = buildInfo;
+				return buildInfo;
 			})
 			.catch(function(err) {
 				var err2 = new Error("Unable to get `db.buildInfo()`");
@@ -69,7 +70,7 @@ angular.module("mw.pages.server.serverBuild", [
 
 	$scope.$watch("connectionModel", this.run, true);
 
-	$scope.$watch("model", function(model, oldModel) {
+	$scope.$watch("model", function(model) {
 		$scope.viewModel.results = model.results ? JsonSvc.stringify($scope.model.results) : "";
 	}, true);
 

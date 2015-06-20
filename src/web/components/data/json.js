@@ -13,7 +13,7 @@ angular.module("mw.components.data.json", [
 	//TODO: `JSON.parse` support (the below `parse` is good but probably unreasonably heavy in some scenarios)
 
 	Number.prototype.toJSON = function toJSON() { //eslint-disable-line no-extend-native
-		return isNaN(this) ? {$nan: 1} : this;
+		return isNaN(this) ? { $nan: 1 } : this;
 	};
 	parsersByKeys.$nan = Number.parseJSON = function parseJSON(obj) {
 		return obj.$nan ? NaN : obj;

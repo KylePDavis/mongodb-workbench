@@ -39,6 +39,7 @@
 		// Stylistic Issues
 		"brace-style": [2, "1tbs"],
 		"camelcase": [2, {"properties": "always"}],
+		"no-underscore-dangle": 0,
 
 		// ECMAScript 6
 		//

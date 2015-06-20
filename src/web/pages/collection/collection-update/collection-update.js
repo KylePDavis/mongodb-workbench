@@ -62,8 +62,7 @@ angular.module("mw.pages.collection.collectionUpdate", [
 		},
 
 		optionsEditorModel: {
-			//jshint -W101
-			//jscs:disable
+/*eslint-disable max-len*/ /*jshint -W101*/ /*jscs:disable*/
 			data:
 `options = {
 //	upsert: < Boolean >,	// DOCS: http://docs.mongodb.org/manual/reference/method/db.collection.update/#insert-a-new-document-if-no-match-exists
@@ -71,8 +70,8 @@ angular.module("mw.pages.collection.collectionUpdate", [
 //	w: < Number | String >,	// DOCS: http://docs.mongodb.org/manual/reference/write-concern/#w-option
 //	wtimeout: < Number >,	// DOCS: http://docs.mongodb.org/manual/reference/write-concern/#wtimeout
 //	j: < Boolean >,			// DOCS: http://docs.mongodb.org/manual/reference/write-concern/#j-option
-};`, //jscs:enable
-//jshint +W101
+};`,
+/*eslint-enable max-len*/ /*jshint +W101*/ /*jscs:enable*/
 		},
 
 		resultsModel: {

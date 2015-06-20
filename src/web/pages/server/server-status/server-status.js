@@ -50,12 +50,13 @@ angular.module("mw.pages.server.serverStatus", [
 	};
 
 	this.run = function run() {
-		if (!$scope.connectionModel || !$scope.connectionModel.dbHostAndPort) return;
+		if (!$scope.connectionModel || !$scope.connectionModel.dbHostAndPort) return $q.reject();
 		$scope.model.results = null;
 		$scope.viewModel.isWorking = true;
 		return MongoSvc.getServerStatus($scope.connectionModel)
 			.then(function(serverStatus) {
-				return ($scope.model.results = serverStatus);
+				$scope.model.results = serverStatus;
+				return serverStatus;
 			})
 			.catch(function(err) {
 				var err2 = new Error("Unable to get `db.serverStatus()`");

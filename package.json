@@ -25,7 +25,7 @@
   "main": "src/app/main.js",
   "scripts": {
     "postinstall": "bower install",
-    "test": "jshint src/  &&  jscs src/app/ src/web/{*.js,components,pages}",
+    "test": "eslint src/  &&  jshint src/  &&  jscs src/app/ src/web/{*.js,components,pages}",
     "start": "electron ."
   },
   "dependencies": {

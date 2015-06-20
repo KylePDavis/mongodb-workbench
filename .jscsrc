@@ -56,7 +56,7 @@
   // disallowSpacesInNamedFunctionExpression
   "disallowSpacesInsideArrayBrackets": true,
   "disallowSpacesInsideBrackets": true,
-  "disallowSpacesInsideObjectBrackets": true,
+  // disallowSpacesInsideObjectBrackets
   "disallowSpacesInsideParentheses": true,
   // disallowTrailingComma
   "disallowTrailingWhitespace": true,
@@ -100,7 +100,7 @@
   "requireSpaceBeforeBinaryOperators": ["+", "-", "/", "*", "=", "==", "===", "!=", "!=="],
   // requireSpaceBeforeBlockStatements
   // requireSpaceBeforeKeywords
-  // requireSpaceBeforeObjectValues
+  "requireSpaceBeforeObjectValues": true,
   // requireSpaceBeforePostfixUnaryOperators
   // requireSpaceBetweenArguments
   // requireSpacesInAnonymousFunctionExpression
@@ -120,7 +120,9 @@
   // requireSpacesInNamedFunctionExpression
   // requireSpacesInsideArrayBrackets
   // requireSpacesInsideBrackets
-  // requireSpacesInsideObjectBrackets
+  "requireSpacesInsideObjectBrackets": {
+      "allExcept": [")"]
+  },
   // requireSpacesInsideParentheses
   "requireTrailingComma": {
     "ignoreSingleLine": true,
