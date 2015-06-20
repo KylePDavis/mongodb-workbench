@@ -29,7 +29,7 @@
     "start": "electron ."
   },
   "dependencies": {
-    "electron-prebuilt": "~0.28.1",
+    "electron-prebuilt": "~0.28.2",
     "mongodb": "~2.0.33"
   }
   ,"private": true
