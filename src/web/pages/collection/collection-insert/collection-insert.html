@@ -1,37 +1,29 @@
-<div class="row">
-	<h5 class="col-xs-12">
-		Add new document(s):
-	</h5>
-</div>
+<div class="col-xs-6" style="height:100%">
 
-<div class="form-group row">
+	<label style="height:2em; padding:0; margin:0">
+		Insert
+	</label>
 
-	<div class="col-xs-6">
+	<tabset style="height:calc(100% - 2em)">
 
-		<label style="width:100%">
-			Insert
-		</label>
+		<tab heading="Documents">
+			<editor
+				autofocus
+				editor-model="model.documentsEditorModel"
+			/>
+		</tab>
 
-		<tabset>
-
-			<tab heading="Documents">
-				<editor class="form-control" style="height:25em; padding:0; border-top-left-radius:0; border-top-right-radius:0;"
-					autofocus
-					editor-model="model.documentsEditorModel"
-				/>
-			</tab>
-
-			<tab heading="Options">
-				<editor class="form-control" style="height:25em; padding:0; border-top-left-radius:0; border-top-right-radius:0;"
-					autofocus
-					editor-model="model.optionsEditorModel"
-				/>
-			</tab>
-
-	</div>
-
-	<results class="col-xs-6"
-		results-model="model.resultsModel"
-	/>
+		<tab heading="Options">
+			<editor
+				autofocus
+				editor-model="model.optionsEditorModel"
+			/>
+		</tab>
+		
+	</tabset>
 
 </div>
+
+<results class="col-xs-6" style="height:100%"
+	results-model="model.resultsModel"
+/>

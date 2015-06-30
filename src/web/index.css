@@ -20,11 +20,26 @@ input, textarea, p, h1, h2, h3, h4, h5, h6, small, label, code, pre {
 }
 .row [class^="col-"],
 .row [class*=" col-"] {
-	padding-right: 5px;
-	padding-left: 5px;
+	padding-right: 4px;
+	padding-left: 4px;
 }
 
-/* reset a few rrounded corners */
+/* hacks for tabset height */
+.tabset { height: 100%; }
+.tabset .nav.nav-tabs { height: 42px; }
+.tabset .tab-content { height: calc(100% - 42px); }
+.tabset .tab-content .tab-pane { height: 100%; }
+
+/* hacks for page height */
+div[server],
+div[database],
+div[collection],
+div[tmpltmpl],
+div[tmpltmpl] > * {
+	height: 100%;
+}
+
+/* reset a few rounded corners */
 .input-group > .selectize-control > .selectize-input {
 	border-top-left-radius: 0;
 	border-bottom-left-radius: 0;

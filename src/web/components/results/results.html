@@ -1,4 +1,4 @@
-<label class="control-label">
+<label style="height:2em; padding:0; margin:0">
 	Results
 	<span>
 		<i ng-if="model.data === null" class="fa fa-spinner fa-spin"></i>
@@ -8,14 +8,14 @@
 	</span>
 </label>
 
-<tabset>
+<tabset style="height:calc(100% - 2em)">
 
 	<tab heading="JSON"
 		active="viewModel.tabs.json"
 		select="model.options.tabName='json'"
 		deselect="model.options.tabName=null"
 	>
-		<editor class="form-control" style="height:25em; padding:0; border-top-left-radius:0; border-top-right-radius:0;"
+		<editor
 			ng-if="viewModel.tabs.json"
 			autofocus
 			readonly
@@ -29,7 +29,7 @@
 		deselect="model.options.tabName=null"
 		ng-if="viewModel.jsonEditor.data[0] === '[' && viewModel.jsonEditor.data[1] !== ']'"
 	>
-		<div class="grid" style="width:auto; height:30em"
+		<div class="grid"
 			ng-if="viewModel.tabs.table"
 			ui-grid="viewModel.gridOptions"
 			ui-grid-auto-resize

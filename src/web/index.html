@@ -21,18 +21,17 @@
 </head>
 
 <body ng-controller="IndexCtrl" tabindex="-1" style="width:100%; height:100%; margin:0px; overflow:hidden;">
+	
+<div class="container-fluid" style="height:100%; padding:10px 4px">
 
-	<div ng-view></div>
+	<!--TODO: move height to connection.css-->
+	<div class="row" style="height:45px"
+		connection
+		connection-model="model.connection"
+	></div>
 
-	<div class="row" style="margin:1em 0;">
-		<div class="col-xs-12">
-			<div connection
-				connection-model="model.connection"
-			></div>
-		</div>
-	</div>
-
-	<div class="row" style="height:100%; padding:4px;">
+	<!--TODO: combine as row + welcome / row + tabset ???? -->
+	<div class="row" style="height:calc(100% - 45px)">
 
 		<welcome ng-if="!model.connection.isConnected"></welcome>
 
@@ -89,6 +88,7 @@
 		</div>
 
 	</div>
+</div>
 
 	<script src="bower_components/angular-route/angular-route.min.js"></script>
 	<script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>

@@ -1,7 +1,6 @@
 "use strict";
 
 angular.module("mw", [
-	// "ngRoute",
 	"ui.bootstrap",
 	"mw.components.connection",
 	"mw.pages.welcome",
