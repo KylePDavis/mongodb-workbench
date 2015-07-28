@@ -28,7 +28,7 @@
     "angular-ui-bootstrap-bower": "~0.13.1",
     "angular-ui-select": "~0.9.9",
     "angular-ui-ace": "~0.2.3",
-    "angular-ui-grid": "~3.0.1"
+    "ag-grid": "~1.12.4"
   },
   "resolutions": {
     "angular": "~1.4.4"

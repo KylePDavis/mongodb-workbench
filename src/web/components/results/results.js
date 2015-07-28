@@ -1,12 +1,7 @@
 "use strict";
 
 angular.module("mw.components.results", [
-	"ui.grid",
-	"ui.grid.autoResize", //TODO: look into my fix for doing this without polling
-	"ui.grid.resizeColumns",
-	"ui.grid.moveColumns",
-	"ui.grid.cellNav",
-	"ui.grid.edit",
+	"angularGrid",
 	"mw.components.data.json",
 	"mw.components.editor",
 ])
@@ -47,12 +42,18 @@ angular.module("mw.components.results", [
 				mode: "json",
 			},
 		},
-		gridOptions: {},
+		gridOptions: {
+			columnDefs: null,
+			rowData: null,
+			enableColResize: true,
+			enableFilter: true,
+			enableSorting: true,
+		},
 	};
 	if ($scope.model.options.tabName) $scope.viewModel.tabs[$scope.model.options.tabName] = true;
 
 
-	$scope.$watch("model", function(model) {
+	$scope.$watch("model", function(model, oldModel) {
 
 		if (model.options.tabName) {
 			var tabs = {};
@@ -62,14 +63,25 @@ angular.module("mw.components.results", [
 
 		$scope.viewModel.jsonEditor.data = "";
 		$scope.viewModel.gridOptions.columnDefs = [];
-		if (model.data) {
+		if (model.data !== oldModel.data && Array.isArray(model.data)) {
 			$scope.viewModel.jsonEditor.data = JsonSvc.stringify(model.data);
-			$scope.viewModel.gridOptions = {
-				data: "model.data",
-				enableGridMenu: true,
-				enableColumnResizing: true,
-				enableFiltering: true,
-			};
+			$scope.viewModel.gridOptions.rowData = model.data;
+			$scope.viewModel.gridOptions.columnDefs = Object.keys(
+					model.data.reduce(function(keys, obj) {
+						for (var i = 0, objKeys = Object.keys(obj), l = objKeys.length; i < l; i++) { 
+							keys[objKeys[i]] = 1;
+						}
+						return keys;
+					}, {})
+				)
+				.map(function(key) {
+					return {
+						headerName: key,
+						headerTooltip: key,
+						field: key,
+						minWidth: key.length * 11 + 20, // estimate min width
+					};
+				});
 		}
 
 	}, true);

@@ -29,14 +29,9 @@
 		deselect="model.options.tabName=null"
 		ng-if="viewModel.jsonEditor.data[0] === '[' && viewModel.jsonEditor.data[1] !== ']'"
 	>
-		<div class="grid"
+		<div class="grid ag-dark" style="height:100%"
 			ng-if="viewModel.tabs.table"
-			ui-grid="viewModel.gridOptions"
-			ui-grid-auto-resize
-			ui-grid-resize-columns
-			ui-grid-move-columns
-			ui-grid-cellNav
-			ui-grid-edit
+			ag-grid="viewModel.gridOptions"
 		></div>
 	</tab>
 
