@@ -68,7 +68,7 @@ angular.module("mw.components.results", [
 			$scope.viewModel.gridOptions.rowData = model.data;
 			$scope.viewModel.gridOptions.columnDefs = Object.keys(
 					model.data.reduce(function(keys, obj) {
-						for (var i = 0, objKeys = Object.keys(obj), l = objKeys.length; i < l; i++) { 
+						for (var i = 0, objKeys = Object.keys(obj), l = objKeys.length; i < l; i++) {
 							keys[objKeys[i]] = 1;
 						}
 						return keys;
