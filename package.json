@@ -24,13 +24,18 @@
   ],
   "main": "src/app/main.js",
   "scripts": {
-    "postinstall": "bower install",
+    "postinstall": "electron-rebuild  &&  bower install",
     "test": "eslint src/  &&  jshint src/  &&  jscs src/app/ src/web/{*.js,components,pages}",
-    "start": "electron ."
+    "start": "electron .",
+    "dist": "electron-packager . \"MongoDB Workbench\" --all --version=0.30.1 --out=dist/ --ignore='^/dist($|/)' --ignore='/\\.DS_Store$' --ignore='\\.sw.$' --prune --asar  &&  (cd dist/;  for D in */;do  D=\"$(basename \"$D\")\";  cp ../README.md ../LICENSE.md \"$D\";  zip -y -r \"$D.zip\" \"$D\";  done)"
   },
   "dependencies": {
-    "electron-prebuilt": "~0.30.1",
     "mongodb": "~2.0.33"
+  },
+  "devDependencies": {
+    "electron-packager": "~5.0.1",
+    "electron-prebuilt": "~0.30.1",
+    "electron-rebuild": "~0.2.5"
   }
   ,"private": true
 }
